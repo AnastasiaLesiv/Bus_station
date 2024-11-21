@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редагувати запис</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='add-edit.css') }}">
+</head>
+<body>
+    <div class="container">
+    <h1>Редагувати запис у {{ table_name }}</h1>
+    <form method="post">
+        {% if table_name == 'Bus' %}
+        <label>Номер маршруту: <input type="text" name="route_number" value="{{ record.route_number }}" class="form-control" placeholder="Номер маршруту"></label><br>
+        <label>Час відправлення: <input type="text" name="departure_time" value="{{ record.departure_time }}" class="form-control" placeholder="Час відправлення"></label><br>
+        <label>Пункт призначення: <input type="text" name="destination" value="{{ record.destination }}" class="form-control" placeholder="Пункт призначення"></label><br>
+        {% elif table_name == 'Driver' %}
+        <label>Ім'я: <input type="text" name="name" value="{{ record.name }}" class="form-control" placeholder="Ім'я"></label><br>
+        <label>Телефон: <input type="text" name="phone" value="{{ record.phone }}" class="form-control" placeholder="Телефон"></label><br>
+        <label>Номер ліцензії: <input type="text" name="license_number" value="{{ record.license_number }}" class="form-control" placeholder="Номер ліцензії"></label><br>
+        {% elif table_name == 'Route' %}
+        <label>Початковий пункт: <input type="text" name="start_point" value="{{ record.start_point }}" class="form-control" placeholder="Початковий пункт"></label><br>
+        <label>Кінцевий пункт: <input type="text" name="end_point" value="{{ record.end_point }}" class="form-control" placeholder="Кінцевий пункт"></label><br>
+        <label>Відстань (км): <input type="text" name="distance_km" value="{{ record.distance_km }}" class="form-control" placeholder="Відстань (км)"></label><br>
+        {% elif table_name == 'Schedule' %}
+        <label>ID автобуса: <input type="text" name="bus_id" value="{{ record.bus_id }}" class="form-control" placeholder="ID автобуса"></label><br>
+        <label>ID маршруту: <input type="text" name="route_id" value="{{ record.route_id }}" class="form-control" placeholder="ID маршруту"></label><br>
+        <label>Час відправлення: <input type="text" name="departure_time" value="{{ record.departure_time }}" class="form-control" placeholder="Час відправлення"></label><br>
+        <label>Час прибуття: <input type="text" name="arrival_time" value="{{ record.arrival_time }}" class="form-control" placeholder="Час прибуття"></label><br>
+        {% elif table_name == 'Ticket' %}
+        <label>Ім'я пасажира: <input type="text" name="passenger_name" value="{{ record.passenger_name }}" class="form-control" placeholder="Ім'я пасажира"></label><br>
+        <label>ID розкладу: <input type="text" name="schedule_id" value="{{ record.schedule_id }}" class="form-control" placeholder="ID розкладу"></label><br>
+        <label>Номер місця: <input type="text" name="seat_number" value="{{ record.seat_number }}" class="form-control" placeholder="Номер місця"></label><br>
+        <label>Ціна: <input type="text" name="price" value="{{ record.price }}" class="form-control" placeholder="Ціна"></label><br>
+        {% endif %}
+        <button type="submit" class="btn-primary">Зберегти</button>
+    </form>
+    </div>
+</body>
+</html>

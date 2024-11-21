@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Додати запис</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='add-edit.css') }}">
+</head>
+<body>
+    <div class="container">
+    <h1>Додати запис до {{ table_name }}</h1>
+    <form method="post">
+        {% if table_name == 'Bus' %}
+        <label>Номер маршруту: <input type="text" name="route_number" class="form-control" placeholder="Номер маршруту"></label><br>
+        <label>Час відправлення: <input type="text" name="departure_time" class="form-control" placeholder="Час відправлення"></label><br>
+        <label>Пункт призначення: <input type="text" name="destination" class="form-control" placeholder="Пункт призначення"></label><br>
+        {% elif table_name == 'Driver' %}
+        <label>Ім'я: <input type="text" name="name" class="form-control" placeholder="Ім'я"></label><br>
+        <label>Телефон: <input type="text" name="phone" class="form-control" placeholder="Телефон"></label><br>
+        <label>Номер ліцензії: <input type="text" name="license_number" class="form-control" placeholder="Номер ліцензії"></label><br>
+        {% elif table_name == 'Route' %}
+        <label>Початковий пункт: <input type="text" name="start_point" class="form-control" placeholder="Початковий пункт"></label><br>
+        <label>Кінцевий пункт: <input type="text" name="end_point" class="form-control" placeholder="Кінцевий пункт"></label><br>
+        <label>Відстань (км): <input type="text" name="distance_km" class="form-control" placeholder="Відстань (км)"></label><br>
+        {% elif table_name == 'Schedule' %}
+        <label>ID автобуса: <input type="text" name="bus_id" class="form-control" placeholder="ID автобуса"></label><br>
+        <label>ID маршруту: <input type="text" name="route_id" class="form-control" placeholder="ID маршруту"></label><br>
+        <label>Час відправлення: <input type="text" name="departure_time" class="form-control" placeholder="Час відправлення"></label><br>
+        <label>Час прибуття: <input type="text" name="arrival_time" class="form-control" placeholder="Час прибуття"></label><br>
+        {% elif table_name == 'Ticket' %}
+        <label>Ім'я пасажира: <input type="text" name="passenger_name" class="form-control" placeholder="Ім'я пасажира"></label><br>
+        <label>ID розкладу: <input type="text" name="schedule_id" class="form-control" placeholder="ID розкладу"></label><br>
+        <label>Номер місця: <input type="text" name="seat_number" class="form-control" placeholder="Номер місця"></label><br>
+        <label>Ціна: <input type="text" name="price" class="form-control" placeholder="Ціна"></label><br>
+        {% endif %}
+        <button type="submit" class="btn-primary">Додати</button>
+    </form>
+    </div>
+</body>
+</html>
